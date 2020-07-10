@@ -5,31 +5,31 @@ public class StringCalculator {
 	public int Add(String numbers) throws Exception {
 		int result=0;
 		String[] arr = null;
-		String delimiter = "[,\n]+";
+		String delimiter = "";
 		String negativeNumber="";
 		count = count+1;
-		if(numbers.length()==1) {
+		if(numbers.length()==0) {
+			return result;
+		}
+		else if(numbers.length()==1) {
 			result = Integer.parseInt(numbers);
 			if(result>1000) {
 				return 0;
+			}
+			else {
+				return result;
 			}
 		}
 		else if(numbers.length()>1 && numbers.startsWith("//")) {
 			int startIndex = 2;
 			int endIndex = numbers.indexOf("\n");
-			String newNumber=null;
+			String newNumber=numbers.substring(endIndex+1);
 			delimiter = numbers.substring(startIndex, endIndex);
+			
 			if(delimiter.startsWith("[")) {
 				String newDelimiter ="";
 				if(delimiter.indexOf("[")==delimiter.lastIndexOf("[")) {
 					newDelimiter = delimiter.substring(1, 2);
-					newNumber = numbers.substring(numbers.indexOf("\n")+1);
-					if(newDelimiter.contains("*") || newDelimiter.contains("?") || newDelimiter.contains("+")) {
-						arr = newNumber.split("[\\"+newDelimiter.charAt(0)+"]+");
-					}
-					else {
-						arr = newNumber.split("["+newDelimiter.charAt(0)+"]+");
-					}
 				}
 				else {
 					for(int i=0;i<delimiter.length();i++) {
@@ -37,18 +37,11 @@ public class StringCalculator {
 							newDelimiter = newDelimiter + delimiter.substring(i+1, delimiter.indexOf("]", i));
 						}
 					}
-					newNumber = numbers.substring(endIndex+1);
-					if(newDelimiter.contains("*") || newDelimiter.contains("?") || newDelimiter.contains("+")) {
-						arr = newNumber.split("[\\"+newDelimiter+"]+");
-					}
-					else {
-						arr = newNumber.split("["+newDelimiter+"]+");
-					}
 				}
+				arr = newNumber.split("[\\"+newDelimiter+"]+");
 			}
 			else {
-				newNumber = numbers.substring(endIndex+1);
-				arr = newNumber.split("["+delimiter+"]+");
+				arr = newNumber.split("[\\"+delimiter+"]+");
 			}
 			for(int i =0;i<arr.length;i++) {
 				if(Integer.parseInt(arr[i])<0) {
@@ -63,16 +56,13 @@ public class StringCalculator {
 			}
 			return result;
 		}
-		else if(numbers.length()>1 && numbers.contains(",")) {
-			if(numbers.startsWith("//")) {
-				if(delimiter.contains("*") || delimiter.contains("?") || delimiter.contains("+")) {
-					arr = numbers.split("[\\"+delimiter+"]+");
+		else{
+			for(int i=0;i<numbers.length();i++) {
+				if(!Character.isDigit(numbers.charAt(i))) {
+					delimiter=delimiter+numbers.charAt(i);
 				}
 			}
-			else {
-				arr = numbers.split(delimiter);
-			}
-			
+			arr = numbers.split("[\\"+delimiter+"]+");
 			for(int i =0;i<arr.length;i++) {
 				if(Integer.parseInt(arr[i])<0) {
 					negativeNumber = negativeNumber+arr[i]+",";
@@ -86,7 +76,6 @@ public class StringCalculator {
 			}
 			return result;
 		}
-		return result;
 	}
 	
 	public int GetCalledCount()  {
