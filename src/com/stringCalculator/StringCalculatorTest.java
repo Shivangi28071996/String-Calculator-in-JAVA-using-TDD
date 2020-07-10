@@ -11,7 +11,7 @@ import org.junit.runners.MethodSorters;
 public class StringCalculatorTest {
 
 	@Test
-	public void t1_noNumberAddTest() {
+	public void t01_noNumberAddTest() {
 		StringCalculator sc = new StringCalculator();
 		int result = 0;
 		try {
@@ -24,7 +24,7 @@ public class StringCalculatorTest {
 	}
 	
 	@Test
-	public void t2_oneNumberAddTest() {
+	public void t02_oneNumberAddTest() {
 		StringCalculator sc = new StringCalculator();
 		int result = 0;
 		try {
@@ -37,7 +37,7 @@ public class StringCalculatorTest {
 	}
 	
 	@Test
-	public void t3_twoNumberAddTest() {
+	public void t03_twoNumberAddTest() {
 		StringCalculator sc = new StringCalculator();
 		int result = 0;
 		try {
@@ -50,7 +50,7 @@ public class StringCalculatorTest {
 	}
 	
 	@Test
-	public void t4_unknownNumbersAddTest() {
+	public void t04_unknownNumbersAddTest() {
 		StringCalculator sc = new StringCalculator();
 		int result = 0;
 		try {
@@ -63,7 +63,7 @@ public class StringCalculatorTest {
 	}
 	
 	@Test
-	public void t5_newLineAddTest() {
+	public void t05_newLineAddTest() {
 		StringCalculator sc = new StringCalculator();
 		int result = 0;
 		try {
@@ -76,7 +76,7 @@ public class StringCalculatorTest {
 	}
 	
 	@Test
-	public void t6_differentDelimeterAddTest() {
+	public void t06_differentDelimeterAddTest() {
 		StringCalculator sc = new StringCalculator();
 		int result = 0;
 		try {
@@ -89,7 +89,7 @@ public class StringCalculatorTest {
 	}
 	
 	@Test
-	public void t7_negativeNumberTest() {
+	public void t07_negativeNumberTest() {
 		StringCalculator sc = new StringCalculator();
 		try {
 			sc.Add("//:,;\n1;2,-3:-5,-1");
@@ -99,10 +99,33 @@ public class StringCalculatorTest {
 	}
 	
 	@Test
-	public void t8_countAddMethodCalled() {
+	public void t08_countAddMethodCalled() {
 		StringCalculator sc = new StringCalculator();
 		int count = sc.GetCalledCount();
 		assertEquals(7, count);
 	}
 	
+	@Test
+	public void t09_equalTo1000AddTest() {
+		StringCalculator sc = new StringCalculator();
+		int result = 0;
+		try {
+			result = sc.Add("1\n2,3\n1000");
+			assertEquals(1006,result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void t10_greaterThan1000AddTest() {
+		StringCalculator sc = new StringCalculator();
+		int result = 0;
+		try {
+			result = sc.Add("1\n2,3\n1005");
+			assertEquals(6,result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

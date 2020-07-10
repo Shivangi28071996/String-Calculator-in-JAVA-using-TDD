@@ -9,7 +9,10 @@ public class StringCalculator {
 		String negativeNumber="";
 		count = count+1;
 		if(numbers.length()==1) {
-			return Integer.parseInt(numbers);
+			result = Integer.parseInt(numbers);
+			if(result>1000) {
+				return 0;
+			}
 		}
 		else if(numbers.length()>1 && numbers.startsWith("//")) {
 			int startIndex = 2;
@@ -17,11 +20,12 @@ public class StringCalculator {
 			delimiter = numbers.substring(startIndex, endIndex);
 			String newNumber = numbers.substring(endIndex+1);
 			arr = newNumber.split("["+delimiter+"]+");
+			
 			for(int i =0;i<arr.length;i++) {
 				if(Integer.parseInt(arr[i])<0) {
 					negativeNumber = negativeNumber+arr[i]+",";
 				}
-				if(negativeNumber.length()==0) {
+				if(negativeNumber.length()==0 && Integer.parseInt(arr[i])<=1000) {
 					result = result + Integer.parseInt(arr[i]);
 				}
 			}
@@ -36,7 +40,7 @@ public class StringCalculator {
 				if(Integer.parseInt(arr[i])<0) {
 					negativeNumber = negativeNumber+arr[i]+",";
 				}
-				if(negativeNumber.length()==0) {
+				if(negativeNumber.length()==0 && Integer.parseInt(arr[i])<=1000) {
 					result = result + Integer.parseInt(arr[i]);
 				}
 			}
