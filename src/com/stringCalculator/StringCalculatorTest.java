@@ -87,7 +87,7 @@ public class StringCalculatorTest {
 		
 	}
 	
-//	@Test
+	@Test
 	public void t07_negativeNumberTest() {
 		StringCalculator sc = new StringCalculator();
 		try {
@@ -101,7 +101,7 @@ public class StringCalculatorTest {
 	public void t08_countAddMethodCalled() {
 		StringCalculator sc = new StringCalculator();
 		int count = sc.GetCalledCount();
-		assertEquals(6, count);
+		assertEquals(7, count);
 	}
 	
 	@Test
