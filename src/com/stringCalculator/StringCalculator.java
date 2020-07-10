@@ -9,6 +9,17 @@ public class StringCalculator {
 		if(numbers.length()==1) {
 			return Integer.parseInt(numbers);
 		}
+		else if(numbers.length()>1 && numbers.startsWith("//")) {
+			int startIndex = 2;
+			int endIndex = numbers.indexOf("\n");
+			delimiter = numbers.substring(startIndex, endIndex);
+			String newNumber = numbers.substring(endIndex+1);
+			arr = newNumber.split("["+delimiter+"]+");
+			for(int i =0;i<arr.length;i++) {
+				result = result + Integer.parseInt(arr[i]);
+			}
+			return result;
+		}
 		else if(numbers.length()>1 && numbers.contains(",")) {
 			arr = numbers.split(delimiter);
 			for(int i =0;i<arr.length;i++) {

@@ -41,4 +41,11 @@ public class StringCalculatorTest {
 		assertEquals(6,result);
 	}
 	
+	@Test
+	public void differentDelimeterAddTest() {
+		StringCalculator sc = new StringCalculator();
+		int result = sc.Add("//:,;\n1;2,3:5,1");
+		assertEquals(12,result);
+	}
+	
 }
