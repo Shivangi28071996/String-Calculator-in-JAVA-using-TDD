@@ -139,4 +139,16 @@ public class StringCalculatorTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void t12_multipleDelimiterTest() {
+		StringCalculator sc = new StringCalculator();
+		int result = 0;
+		try {
+			result = sc.Add("//[%][#][@]\n1%2#3@4");
+			assertEquals(10,result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -27,6 +27,16 @@ public class StringCalculator {
 					newNumber = numbers.substring(numbers.indexOf("\n")+1);
 					arr = newNumber.split(delimiter);
 				}
+				else {
+					String newDelimiter ="";
+					for(int i=0;i<delimiter.length();i++) {
+						if(delimiter.charAt(i)=='[') {
+							newDelimiter = newDelimiter + delimiter.substring(i+1, delimiter.indexOf("]", i));
+						}
+					}
+					newNumber = numbers.substring(endIndex+1);
+					arr = newNumber.split("["+newDelimiter+"]+");
+				}
 			}
 			else {
 				newNumber = numbers.substring(endIndex+1);
