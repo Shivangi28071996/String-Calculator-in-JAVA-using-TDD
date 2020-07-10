@@ -1,11 +1,13 @@
 package com.stringCalculator;
 
 public class StringCalculator {
+	static int count = 0;
 	public int Add(String numbers) throws Exception {
 		int result=0;
 		String[] arr = null;
 		String delimiter = "[,\n]+";
 		String negativeNumber="";
+		count = count+1;
 		if(numbers.length()==1) {
 			return Integer.parseInt(numbers);
 		}
@@ -44,5 +46,9 @@ public class StringCalculator {
 			return result;
 		}
 		return result;
+	}
+	
+	public int GetCalledCount()  {
+		return count;
 	}
 }
