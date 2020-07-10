@@ -32,9 +32,14 @@ public class StringCalculator {
 			arr = numbers.split(delimiter);
 			for(int i =0;i<arr.length;i++) {
 				if(Integer.parseInt(arr[i])<0) {
-					throw new Exception("negatives not allowed");
+					negativeNumber = negativeNumber+arr[i]+",";
 				}
-				result = result + Integer.parseInt(arr[i]);
+				if(negativeNumber.length()==0) {
+					result = result + Integer.parseInt(arr[i]);
+				}
+			}
+			if(negativeNumber.length()>0) {
+				throw new Exception("negatives not allowed:"+negativeNumber.substring(0, negativeNumber.length()-1));
 			}
 			return result;
 		}

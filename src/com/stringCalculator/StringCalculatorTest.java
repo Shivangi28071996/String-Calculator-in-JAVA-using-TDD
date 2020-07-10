@@ -13,10 +13,11 @@ public class StringCalculatorTest {
 		int result = 0;
 		try {
 			result = sc.Add("");
+			assertEquals(0,result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertEquals(0,result);
+		
 	}
 	
 	@Test
@@ -25,10 +26,11 @@ public class StringCalculatorTest {
 		int result = 0;
 		try {
 			result = sc.Add("1");
+			assertEquals(1,result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertEquals(1,result);
+		
 	}
 	
 	@Test
@@ -37,10 +39,11 @@ public class StringCalculatorTest {
 		int result = 0;
 		try {
 			result = sc.Add("1,2");
+			assertEquals(3,result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertEquals(3,result);
+		
 	}
 	
 	@Test
@@ -49,10 +52,11 @@ public class StringCalculatorTest {
 		int result = 0;
 		try {
 			result = sc.Add("1,2,3,4,5");
+			assertEquals(15,result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertEquals(15,result);
+		
 	}
 	
 	@Test
@@ -61,10 +65,11 @@ public class StringCalculatorTest {
 		int result = 0;
 		try {
 			result = sc.Add("1\n2,3");
+			assertEquals(6,result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertEquals(6,result);
+		
 	}
 	
 	@Test
@@ -73,11 +78,11 @@ public class StringCalculatorTest {
 		int result = 0;
 		try {
 			result = sc.Add("//:,;\n1;2,3:5,1");
+			assertEquals(12,result);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		assertEquals(12,result);
+		
 	}
 	
 	@Test
@@ -86,8 +91,7 @@ public class StringCalculatorTest {
 		try {
 			sc.Add("//:,;\n1;2,-3:-5,-1");
 		}catch(Exception e) {
-			System.out.println(e.getMessage());
-			assertTrue(e.getMessage().contains("negatives not allowed"));
+			e.printStackTrace();
 		}
 	}
 	
