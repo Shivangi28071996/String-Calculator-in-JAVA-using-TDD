@@ -87,7 +87,7 @@ public class StringCalculatorTest {
 		
 	}
 	
-//	@Test
+	@Test
 	public void t07_negativeNumberTest() {
 		StringCalculator sc = new StringCalculator();
 		try {
@@ -101,7 +101,7 @@ public class StringCalculatorTest {
 	public void t08_countAddMethodCalled() {
 		StringCalculator sc = new StringCalculator();
 		int count = sc.GetCalledCount();
-		assertEquals(6, count);
+		assertEquals(7, count);
 	}
 	
 	@Test
@@ -153,11 +153,47 @@ public class StringCalculatorTest {
 	}
 	
 	@Test
-	public void t12_multipleDelimiterAnyLengthTest() {
+	public void t13_multipleDelimiterAnyLengthTest() {
 		StringCalculator sc = new StringCalculator();
 		int result = 0;
 		try {
 			result = sc.Add("//[%%][###][@]\n1%%2###3@4");
+			assertEquals(10,result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void t14_metaDelimiterTest() {
+		StringCalculator sc = new StringCalculator();
+		int result = 0;
+		try {
+			result = sc.Add("//[***]\n1***2***3***4");
+			assertEquals(10,result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void t15_metamultipleDelimiterTest() {
+		StringCalculator sc = new StringCalculator();
+		int result = 0;
+		try {
+			result = sc.Add("//[#][?][@]\n1#2?3@4");
+			assertEquals(10,result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void t16_metamultipleDelimiterAnyLengthTest() {
+		StringCalculator sc = new StringCalculator();
+		int result = 0;
+		try {
+			result = sc.Add("//[**][?][@@]\n1**2?3@@4");
 			assertEquals(10,result);
 		} catch (Exception e) {
 			e.printStackTrace();
