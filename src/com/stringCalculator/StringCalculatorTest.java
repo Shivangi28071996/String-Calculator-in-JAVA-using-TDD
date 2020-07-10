@@ -33,7 +33,6 @@ public class StringCalculatorTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	@Test
@@ -88,7 +87,7 @@ public class StringCalculatorTest {
 		
 	}
 	
-	@Test
+//	@Test
 	public void t07_negativeNumberTest() {
 		StringCalculator sc = new StringCalculator();
 		try {
@@ -102,7 +101,7 @@ public class StringCalculatorTest {
 	public void t08_countAddMethodCalled() {
 		StringCalculator sc = new StringCalculator();
 		int count = sc.GetCalledCount();
-		assertEquals(7, count);
+		assertEquals(6, count);
 	}
 	
 	@Test
@@ -123,6 +122,18 @@ public class StringCalculatorTest {
 		int result = 0;
 		try {
 			result = sc.Add("1\n2,3\n1005");
+			assertEquals(6,result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void t11_anyLengthDelimiterTest() {
+		StringCalculator sc = new StringCalculator();
+		int result = 0;
+		try {
+			result = sc.Add("//[%%%]\n1%%%2%%%3");
 			assertEquals(6,result);
 		} catch (Exception e) {
 			e.printStackTrace();

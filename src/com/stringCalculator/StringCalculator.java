@@ -17,10 +17,21 @@ public class StringCalculator {
 		else if(numbers.length()>1 && numbers.startsWith("//")) {
 			int startIndex = 2;
 			int endIndex = numbers.indexOf("\n");
+			String newNumber=null;
 			delimiter = numbers.substring(startIndex, endIndex);
-			String newNumber = numbers.substring(endIndex+1);
-			arr = newNumber.split("["+delimiter+"]+");
-			
+			if(delimiter.startsWith("[")) {
+				if(delimiter.indexOf("[")==delimiter.lastIndexOf("[")) {
+					startIndex = 1;
+					endIndex = delimiter.indexOf("]");
+					delimiter = delimiter.substring(startIndex, endIndex);
+					newNumber = numbers.substring(numbers.indexOf("\n")+1);
+					arr = newNumber.split(delimiter);
+				}
+			}
+			else {
+				newNumber = numbers.substring(endIndex+1);
+				arr = newNumber.split("["+delimiter+"]+");
+			}
 			for(int i =0;i<arr.length;i++) {
 				if(Integer.parseInt(arr[i])<0) {
 					negativeNumber = negativeNumber+arr[i]+",";
