@@ -21,9 +21,18 @@ public class StringCalculatorTest {
 	}
 	
 	@Test
-	public void TwoNumberAddTest() {
+	public void twoNumberAddTest() {
 		StringCalculator sc = new StringCalculator();
 		int result = sc.Add("1,2");
 		assertEquals(3,result);
 	}
+	
+	@Test
+	public void unknownNumbersAddTest() {
+		StringCalculator sc = new StringCalculator();
+		int result = sc.Add("1,2,3,4,5");
+		assertEquals(15,result);
+	}
+	
+	
 }
