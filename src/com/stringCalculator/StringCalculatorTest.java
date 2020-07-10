@@ -34,5 +34,11 @@ public class StringCalculatorTest {
 		assertEquals(15,result);
 	}
 	
+	@Test
+	public void newLineAddTest() {
+		StringCalculator sc = new StringCalculator();
+		int result = sc.Add("1\n2,3");
+		assertEquals(6,result);
+	}
 	
 }

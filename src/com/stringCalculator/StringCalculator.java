@@ -4,12 +4,13 @@ public class StringCalculator {
 	public int Add(String numbers) {
 		int result=0;
 		String[] arr = null;
+		String delimiter = "[,\n]+";
 		
 		if(numbers.length()==1) {
 			return Integer.parseInt(numbers);
 		}
 		else if(numbers.length()>1 && numbers.contains(",")) {
-			arr = numbers.split(",");
+			arr = numbers.split(delimiter);
 			for(int i =0;i<arr.length;i++) {
 				result = result + Integer.parseInt(arr[i]);
 			}
